@@ -1,2 +1,0 @@
--something wrong
--dont do the diff(). just use shift()
