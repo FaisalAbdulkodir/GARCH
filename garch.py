@@ -55,7 +55,7 @@ try:
     conn = create_engine('mysql+pymysql://{}:@{}:{}/{}'.format(user,host,port,database))
 except (Exception, NameError) as error:
     st.write("Error while connecting to mysql", error)
-df_garch = pd.read_sql('SELECT * FROM eropa', conn, index_col='Date')
+df_garch = pd.read_sql('SELECT * FROM garch', conn, index_col='datetime')
 st.write(df_garch .head())
 
 # st.write("""DATA""")
@@ -63,7 +63,7 @@ st.write(df_garch .head())
 
 #mengubah matrix
 def vecl(matrix):
-    lower_matrix = np.tril(matrix,k=-1)
+    lower_matrix = np.tril(matrix,k=-1) 
     array_with_zero = np.matrix(lower_matrix).A1
 
     array_without_zero = array_with_zero[array_with_zero!=0]
